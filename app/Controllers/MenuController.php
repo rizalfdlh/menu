@@ -33,12 +33,32 @@ class MenuController extends BaseController
             Session::flash('error', $validator);
             return redirect('/menu');
         }
-        $user = Menu::create([
-            'menu' => $request->menu,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'created_at' => Date::Now(),
-        ]);
+        $validateType = $request->getClientMimeType('picture');
+        $allowedType = ['image/png', 'image/jpg', 'image/jpeg'];
+        if (!in_array($validateType, $allowedType)) {
+            Session::flash('error', 'File yang diinput tidak sesuai');
+            return redirect('/menu');
+        }
+        if ($request->getClientOriginalName('picture')) {
+            $path = storage_path('menu/picture');
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+
+            $fileName = $request->getClientOriginalName('picture');
+            $tempPath = $request->getPath('picture');
+            $destination = $path . '/' . $fileName;
+
+            if (move_uploaded_file($tempPath, $destination)) {
+                $user = Menu::create([
+                    'menu' => $request->menu,
+                    'price' => $request->price,
+                    'stock' => $request->stock,
+                    'picture' => $fileName,
+                    'created_at' => Date::Now(),
+                ]);
+            }
+        }
         return redirect('/menu');
     }
 

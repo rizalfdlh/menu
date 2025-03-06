@@ -57,6 +57,7 @@
                             <th>Menu</th>
                             <th>Price</th>
                             <th>Stock</th>
+                            <th>Picture</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -71,6 +72,7 @@
                                 <td><?= $mn->menu ?></td>
                                 <td><?= $mn->price ?></td>
                                 <td><?= $mn->stock ?></td>
+                                <td><?= $mn->picture ?></td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#border-less-edit<?= $mn->id_menu ?>">Edit</button>

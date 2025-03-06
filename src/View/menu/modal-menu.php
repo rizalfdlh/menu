@@ -35,10 +35,16 @@
                                 <label>Stock</label>
                             </div>
                             <div class="col-md-8 form-group d-flex">
-                                <input type="text" name="stock" id="stock" class="form-control text-center"
-                                    value="0" required>
-                                <button type="button" class="btn btn-danger" onclick="changeStock(-1)">-</button>
-                                <button type="button" class="btn btn-success" onclick="changeStock(1)">+</button>
+
+                                <input type="number" name="stock" id="stock" class="form-control text-center mx-2" value="0" min="0" required>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="file" class="form-label">Picture</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="file" name="picture" id="picture" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -78,7 +84,7 @@
     // Fungsi untuk menambah/mengurangi stok
     function changeStock(amount) {
         let stockInput = document.getElementById('stock');
-        let currentStock = parseInt(stockInput.value) || 0;
+        let currentStock = parseInt(stockInput.value) || 0; // Pastikan nilai angka
         let newStock = currentStock + amount;
         stockInput.value = newStock < 0 ? 0 : newStock; // Tidak boleh kurang dari 0
     }

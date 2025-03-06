@@ -108,7 +108,7 @@
                         <li class="sidebar-title">Interface</li>
 
                         <li class="sidebar-item  ">
-                            <a href="index.php?page=product" class='sidebar-link'>
+                            <a href="<?= base_url() ?>/product" class='sidebar-link'>
                                 <i class="fa-solid fa-box"></i>
                                 <span>Product</span>
                             </a>

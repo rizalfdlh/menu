@@ -2,6 +2,7 @@
 
 use App\Controllers\HomeController;
 use App\Controllers\MenuController;
+use App\Controllers\ProductController;
 use App\Models\Menu;
 use App\Models\User;
 use Support\Route;
@@ -25,3 +26,6 @@ Route::get('/menu', [MenuController::class, 'menu']);
 Route::post('/menu', [MenuController::class, 'create']);
 Route::post('/menu-edit/{id}', [MenuController::class, 'update']);
 Route::delete('/menu-delete/{id}', [MenuController::class, 'delete']);
+
+// Menu
+Route::get('/product', [ProductController::class, 'product']);
